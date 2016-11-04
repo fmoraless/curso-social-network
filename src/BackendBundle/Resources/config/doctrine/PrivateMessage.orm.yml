@@ -1,10 +1,13 @@
-BackendBundle\Entity\Notifications:
+BackendBundle\Entity\PrivateMessage:
     type: entity
-    table: notifications
+    table: private_messages
     indexes:
-        fk_notifications_users:
+        fk_emitter_privates:
             columns:
-                - user_id
+                - emitter
+        fk_receiver_privates:
+            columns:
+                - receiver
     id:
         id:
             type: integer
@@ -15,18 +18,24 @@ BackendBundle\Entity\Notifications:
             generator:
                 strategy: IDENTITY
     fields:
-        type:
+        message:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        file:
             type: string
             nullable: true
             length: 255
             options:
                 fixed: false
-        typeId:
-            type: integer
+        imagen:
+            type: string
             nullable: true
+            length: 255
             options:
-                unsigned: false
-            column: type_id
+                fixed: false
         readed:
             type: string
             nullable: true
@@ -37,21 +46,25 @@ BackendBundle\Entity\Notifications:
             type: datetime
             nullable: true
             column: created_at
-        extra:
-            type: string
-            nullable: true
-            length: 100
-            options:
-                fixed: false
     manyToOne:
-        user:
-            targetEntity: Users
+        emitter:
+            targetEntity: User
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                user_id:
+                emitter:
+                    referencedColumnName: id
+            orphanRemoval: false
+        receiver:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                receiver:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }
