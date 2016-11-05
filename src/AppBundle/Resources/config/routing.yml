@@ -1,7 +1,7 @@
-app_user:
-    resource: "@AppBundle/Resources/config/routing/user.yml"
-    prefix: /
-    
-app_publication:
-    resource: "@AppBundle/Resources/config/routing/publication.yml"
-    prefix: /
+#app_user:
+#    resource: "@AppBundle/Resources/config/routing/user.yml"
+#    prefix: /
+#    
+#app_publication:
+#    resource: "@AppBundle/Resources/config/routing/publication.yml"
+#    prefix: /
