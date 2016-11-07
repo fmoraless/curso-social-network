@@ -4,12 +4,20 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 use BackendBundle\Entity\User;
 use AppBundle\Form\RegisterType;
 
 class UserController extends Controller{
-    
-    public function loginAction(Request $request){
+	
+	private $session;
+	public function __construct() {
+		$this->session = new Session();
+	}
+
+
+	public function loginAction(Request $request){
         
         return $this->render('AppBundle:User:login.html.twig', array(
             "titulo" => "Login"
@@ -46,6 +54,8 @@ class UserController extends Controller{
 					
 					if($flush == null){
 						$status = "Te has registrado correctamente";
+						
+						$this->session->getFlashBag()->add("status", $status);
 						return $this->redirect("login");
 					}else{
 						$status = "No te has registrado correctamente";
@@ -58,6 +68,7 @@ class UserController extends Controller{
 				$status = "No te has registrado correctamente";
 				
 			}
+			$this->session->getFlashBag()->add("status", $status);
 		}
         
         return $this->render('AppBundle:User:register.html.twig', array(
