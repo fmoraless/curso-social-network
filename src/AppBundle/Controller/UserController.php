@@ -37,6 +37,19 @@ class UserController extends Controller{
 					
 					$password = $encoder->encodePassword($form->get("password")->getData(), $user->getSalt());
 					
+					$user->setPassword($password);
+					$user->setRole("ROLE_USER");
+					$user->setImage(null);
+					
+					$em->persist($user);
+					$flush = $em->flush();
+					
+					if($flush == null){
+						$status = "Te has registrado correctamente";
+						return $this->redirect("login");
+					}else{
+						$status = "No te has registrado correctamente";
+					}
 				}else{
 					$status = "El usuario ya existe !!";
 				}
