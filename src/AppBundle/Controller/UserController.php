@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+
 use BackendBundle\Entity\User;
 use AppBundle\Form\RegisterType;
 use AppBundle\Form\UserType;
@@ -130,7 +131,7 @@ class UserController extends Controller {
 							$file_name = $user->getId().time().'.'.$ext;
 							$file->move("uploads/users", $file_name);
 							
-							$user->setImage($user_image);
+							$user->setImage($file_name);
 						}
 					}else{
 						$user->setImage($user_image);
