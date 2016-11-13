@@ -1,13 +1,14 @@
 <?php
 
 namespace BackendBundle\Entity;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  */
-class User implements UserInterface
-{
+class User implements UserInterface, \Serializable {
+
     /**
      * @var integer
      */
@@ -58,35 +59,48 @@ class User implements UserInterface
      */
     private $image;
 
+    public function getUsername() {
+        return $this->email;
+    }
 
-	public function getUsername(){
-		return $this->email;
-	}
-	
-	public function getSalt(){
-		return null;
-	}
-	
-	public function getRoles(){
-		return array('ROLE_USER', 'ROLE_ADMIN');
-	}
-	
-	public function eraseCredentials(){
-		
-	}
-	
-	public function __toString(){
-		return $this->name;
-	}
-	
-	
+    public function getSalt() {
+        return null;
+    }
+
+    public function getRoles() {
+        return array('ROLE_USER', 'ROLE_ADMIN');
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function __toString() {
+        return $this->name;
+    }
+
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($serialized) {
+        list(
+                $this->id,
+                $this->email,
+                $this->password,
+            )   = unserialize($serialized);
+    }
+
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -97,8 +111,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setRole($role)
-    {
+    public function setRole($role) {
         $this->role = $role;
 
         return $this;
@@ -109,8 +122,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
 
@@ -121,8 +133,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -133,8 +144,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -145,8 +155,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -157,8 +166,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -169,8 +177,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setSurname($surname)
-    {
+    public function setSurname($surname) {
         $this->surname = $surname;
 
         return $this;
@@ -181,8 +188,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getSurname()
-    {
+    public function getSurname() {
         return $this->surname;
     }
 
@@ -193,8 +199,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -205,8 +210,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -217,8 +221,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setNick($nick)
-    {
+    public function setNick($nick) {
         $this->nick = $nick;
 
         return $this;
@@ -229,8 +232,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getNick()
-    {
+    public function getNick() {
         return $this->nick;
     }
 
@@ -241,8 +243,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setBio($bio)
-    {
+    public function setBio($bio) {
         $this->bio = $bio;
 
         return $this;
@@ -253,8 +254,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getBio()
-    {
+    public function getBio() {
         return $this->bio;
     }
 
@@ -265,8 +265,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setActive($active)
-    {
+    public function setActive($active) {
         $this->active = $active;
 
         return $this;
@@ -277,8 +276,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getActive()
-    {
+    public function getActive() {
         return $this->active;
     }
 
@@ -289,8 +287,7 @@ class User implements UserInterface
      *
      * @return User
      */
-    public function setImage($image)
-    {
+    public function setImage($image) {
         $this->image = $image;
 
         return $this;
@@ -301,9 +298,8 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
-}
 
+}
