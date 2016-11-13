@@ -164,5 +164,11 @@ class UserController extends Controller {
 					"form" => $form->createView()
 		));
 	}
+    
+    public function usersAction(Request $request){
+        
+        var_dump("Users action");
+        die();
+    }
 
 }
