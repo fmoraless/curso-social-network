@@ -77,6 +77,6 @@ knp_paginator:
         sort_direction_name: direction
         distinct: true
     template:
-        pagination: AppBundle:Layouts:customs_pagination.html.twig
+        pagination: AppBundle:Layouts:custom_pagination.html.twig
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig
         
