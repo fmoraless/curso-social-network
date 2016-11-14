@@ -21,8 +21,16 @@ class FollowingController extends Controller {
     }
 	
 	public function followAction(Request $request){
-		echo "Follow action";
-		die();
+		$user = $this->getUser();
+		$followed_id = $request->get('followed');
+		
+		$em = $this->getDoctrine()->getManager();
+		
+		$user_repo = $em->getRepository('BackendBundle:User');
+		$followed = $user_repo->find($followed_id);
+		
+		
+		
 	}
 
     
