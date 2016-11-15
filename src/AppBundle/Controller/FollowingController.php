@@ -29,8 +29,20 @@ class FollowingController extends Controller {
 		$user_repo = $em->getRepository('BackendBundle:User');
 		$followed = $user_repo->find($followed_id);
 		
-		
-		
+		$following = new Following();
+        $following->setUser($user);
+		$following->setFollowed($followed);
+        
+        $em->persist($following);
+        $flush = $em->flush();
+        
+        if($flush == null){
+            $status = "Ahora estas siguiendo a este usuario !!";
+        }else{
+            $status = "No se ha podido seguir a este usuario";
+        }
+        
+        return new Response($status);
 	}
 
     
