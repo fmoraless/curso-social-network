@@ -28,7 +28,7 @@ class FollowingExtension extends \Twig_Extension {
             "followed" => $followed
         ));
         
-        if(!empty($user_following)) && is_object($user_following){
+        if(!empty($user_following) && is_object($user_following)){
             $result = true;
         }else{
             $result = false;
