@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Form\PublicationType;
-use BackendBundle\Entity\Puclication;
+use BackendBundle\Entity\Publication;
 
 class PublicationController extends Controller{
     
@@ -16,7 +16,7 @@ class PublicationController extends Controller{
         $form = $this->createForm(PublicationType::class, $publication);
         
         return $this->render('AppBundle:Publication:home.html.twig', array(
-            'form' => $createView()
+            'form' => $form->createView()
         ));
     }
 }
