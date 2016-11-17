@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container">
 		<div id="timeline" class="col-lg-7 pull-left box-default">
-			<h1 class="box-header>Timeline</h1>
+			<h1 class="box-header">Timeline</h1>
 			
 			<div class="box-content">
 				PUBLICACIONES LIST
@@ -10,7 +10,6 @@
 		</div>
 
 		<div id="user-card" class="col-lg-4 pull-left box-default">
-			
 				<div class="avatar">
 					{% if app.user.image == null %}
 						<img src="{{ asset('assets/images/default.png') }}" />
@@ -31,7 +30,7 @@
 		</div>
 		<div id="new-publication" class="col-lg-4 pull-left box-default">
 			<h1 class="box-header">Crear publicación</h1>
-			<hr/>
+			
 			FORMULARIO
 		</div>
 	</div>

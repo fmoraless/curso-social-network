@@ -59,6 +59,8 @@ body{
 
 #timeline{
 	margin-right: 20px;
+    min-height: 750px;
+    padding-bottom: 20px;
 }
 
 .box-header{
@@ -69,7 +71,6 @@ body{
 }
 
 #user-card{
-	
 	padding: 10px;
 }
 
