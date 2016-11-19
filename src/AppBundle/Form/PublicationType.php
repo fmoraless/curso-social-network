@@ -28,7 +28,7 @@ class PublicationType extends AbstractType
                 ))
                 ->add('image', FileType::class, array(
                     'label' => 'Foto',
-                    'required' => 'false',
+                    'required' => false,
                     'data_class' => null,
                     'attr' => array(
                         'class' => 'form-control'
@@ -36,7 +36,7 @@ class PublicationType extends AbstractType
                 ))
                 ->add('document', FileType::class, array(
                     'label' => 'Documento',
-                    'required' => 'false',
+                    'required' => false,
                     'data_class' => null,
                     'attr' => array(
                         'class' => 'form-control'
