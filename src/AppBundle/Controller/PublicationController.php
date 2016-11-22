@@ -124,6 +124,7 @@ class PublicationController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $publication_repo = $em->getRepository('BackendBundle:Publication');
         $publication = $publication_repo->find($id);
+        $user = $this->getUser();
 
         if($user->getId() == $publication->getUser()->getId()) {
             $em->remove($publication);
