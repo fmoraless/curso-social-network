@@ -36,8 +36,8 @@
                             
                             <p>{{publication.text}}</p>
                             
-                            {% if(publication.user.id is defined) and (publication.user.id == app.user.id) %}
-                                <span data-id="{{publication.id}}" class="btn-delete glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            {%if (publication.user.id is defined) and (publication.user.id == app.user.id) %}
+                                <span data-id="{{publication.id}}" class="btn-delete-pub glyphicon glyphicon-trash" aria-hidden="true"></span>
                             {%endif%}
 							
 							{% if(publication.document is defined) and (publication.document != null) %}
