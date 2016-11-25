@@ -151,5 +151,5 @@ body{
 }
 
 .like .active{
-    color: red;
+    color: red !important;;
 }
