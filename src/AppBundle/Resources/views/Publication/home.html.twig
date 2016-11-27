@@ -108,13 +108,15 @@
 
             <div class="clearfix"></div>
             
+            {% set user_stats = app.user|user_stats %}
+            
             <div class="following-data">
                 <a href="#">
                     <span class="label-stat">
                         Siguiendo
                     </span>
                     <span class="number-stat">
-                        0
+                        {{user_stats.following}}
                     </span>
                 </a>
             </div>
@@ -124,7 +126,7 @@
                         Seguidores
                     </span>
                     <span class="number-stat">
-                        0
+                        {{user_stats.followers}}
                     </span>
                 </a>
             </div>
@@ -134,7 +136,7 @@
                         Publicaciones
                     </span>
                     <span class="number-stat">
-                        0
+                        {{user_stats.publications}}
                     </span>
                 </a>
             </div>
@@ -144,7 +146,7 @@
                         Me gustas
                     </span>
                     <span class="number-stat">
-                        0
+                        {{user_stats.likes}}
                     </span>
                 </a>
             </div>
