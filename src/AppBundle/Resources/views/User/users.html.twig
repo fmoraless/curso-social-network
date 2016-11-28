@@ -1,8 +1,8 @@
 {% extends "AppBundle:Layouts:layout.html.twig" %}
 
 {% block javascripts %}
-	{{ parent() }}
-	<script src="{{ asset('assets/js/custom/users.js') }}"></script>
+    {{ parent() }}
+    <script src="{{ asset('assets/js/custom/users.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -27,10 +27,14 @@
                             {%endif%}
                         </div> 
                         <div class="user-item-content">
-                            <p>{{user.name}} {{user.surname}} - @{{user.nick}}</p>
+                            <p>
+                                <a class="user_link" href="{{ path('user_profile', {'nickname': user.nick}) }}">
+                                    {{user.name}} {{user.surname}} 
+                                </a>
+                                - @{{user.nick}}</p>
                             <p>{{user.bio}}</p>
                         </div>
-                        
+
                         {% if app.user.id != user.id %}
                             <div class="pull-right buttons-following">
                                 <button class="btn btn-sm btn-success btn-follow
@@ -42,7 +46,7 @@
                                     <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
                                     Seguir
                                 </button>
-                                
+
                                 <button class="btn btn-sm btn-default btn-unfollow
                                         {% if app.user|following(user) == false %}
                                             hidden

@@ -34,6 +34,12 @@ body{
 }
 
 /* GENTE T TIMELINE*/
+
+.user_link{
+    color: black;
+    font: bold;
+}
+
 .user-item .avatar,
 .publication-item .avatar{
     background: #eee;
