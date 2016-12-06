@@ -10,7 +10,7 @@ class NotificationService {
     }
      
     public function set($user, $type, $typeId, $extra = null){
-        $em->$this->manager;
+        $em = $this->manager;
         
         $notification = new Notification();
         $notification->setUser($user);
@@ -18,7 +18,7 @@ class NotificationService {
         $notification->setTypeId($typeId);
         $notification->setReaded(0);
         $notification->setCreatedAt(new \DateTime("now"));
-        $notification->setExtra("$extra");
+        $notification->setExtra($extra);
         
         $em->persist($notification);
         $flush = $em->flush();
