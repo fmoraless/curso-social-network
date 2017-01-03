@@ -29,6 +29,14 @@ services:
         tags:
             - { name: twig.extension }
             
+    get_user.twig_extension:
+        class: AppBundle\Twig\LikedExtension
+        public: false
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }
+            
     liked.stats_extension:
         class: AppBundle\Twig\UserStatsExtension
         public: false
