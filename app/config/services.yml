@@ -30,7 +30,7 @@ services:
             - { name: twig.extension }
             
     get_user.twig_extension:
-        class: AppBundle\Twig\LikedExtension
+        class: AppBundle\Twig\GetUserExtension
         public: false
         arguments:
             doctrine: "@doctrine"

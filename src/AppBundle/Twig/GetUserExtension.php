@@ -17,7 +17,7 @@ class GetUserExtension extends \Twig_Extension {
     }
     public function getUserFilter($user_id){
         $user_repo = $this->doctrine->getRepository('BackendBundle:User');
-        $user = $like_repo->findOneBy(array(
+        $user = $user_repo->findOneBy(array(
            "id" => $user_id,
         ));
         
