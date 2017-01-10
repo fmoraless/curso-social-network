@@ -23,6 +23,10 @@ class NotificationController extends Controller
         $notifications = $paginator->paginate(
             $query, $request->query->getInt('page', 1), 5
         );
+        
+        $notification = $this->get('app.notification_service');
+        $notification->read($user);
+        
 		return $this->render('AppBundle:Notification:notification_page.html.twig', array(
 			'user' => $user,
 			'pagination' => $notifications
