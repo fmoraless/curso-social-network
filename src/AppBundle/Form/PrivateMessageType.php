@@ -18,12 +18,13 @@ class PrivateMessageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $user = $options['user'];
+        $user = $options['empty_data'];
+		
         $builder
                 ->add('receiver', EntityType::class, array(
                     'class' => 'BackendBundle:User',
                     'query_builder' => function($er) use($user){
-                        return $user;
+                        return $er->getFollowingUsers($user);
                     },
                     'choice_label' => function($user){
                         return $user->getName()." ".$user->getSurname()." - ".$user->getNick();

@@ -25,7 +25,9 @@ class PrivateMessageController extends Controller {
         $user = $this->getUser();
         
         $private_message = new PrivateMessage();
-        $form = $this->createForm(PrivateMessageType::class, $private_message); 
+        $form = $this->createForm(PrivateMessageType::class, $private_message, array(
+			'empty_data' => $user
+		)); 
         
 		return $this->render('AppBundle:PrivateMessage:index.html.twig', array(
 			"form" => $form->createView()
