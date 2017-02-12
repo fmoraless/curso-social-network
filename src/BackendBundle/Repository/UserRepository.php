@@ -16,7 +16,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository {
 		
 		$following_array = array();
 		foreach ($following as $follow){
-			$following_array[]->getFollowed();
+			$following_array[] = $follow->getFollowed();
 		}
 		
 		$user_repo = $em->getRepository('BackendBundle:User');
