@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class PrivateMessageType extends AbstractType
 {
@@ -17,7 +18,19 @@ class PrivateMessageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder    
+        $user = $options['user'];
+        $builder
+                ->add('receiver', EntityType::class, array(
+                    'class' => 'BackendBundle:User',
+                    'query_builder' => function($er) use($user){
+                        return $user;
+                    },
+                    'choice_label' => function($user){
+                        return $user->getName()." ".$user->getSurname()." - ".$user->getNick();
+                    },
+                    'label' => 'Para:',
+                    'attr' => array('class' => 'form-control')
+                ))
                 ->add('message', TextareaType::class, array(
                     'label' => 'Mensaje',
                     'required' => 'required',
