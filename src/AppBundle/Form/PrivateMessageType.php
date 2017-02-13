@@ -39,7 +39,7 @@ class PrivateMessageType extends AbstractType
                         'class' => 'form-control'
                     )
                 ))
-                ->add('imagen', FileType::class, array(
+                ->add('image', FileType::class, array(
                     'label' => 'Imagen',
                     'required' => false,
                     'data_class' => null,

@@ -30,7 +30,7 @@ BackendBundle\Entity\PrivateMessage:
             length: 255
             options:
                 fixed: false
-        imagen:
+        image:
             type: string
             nullable: true
             length: 255

@@ -25,7 +25,7 @@ class PrivateMessage
     /**
      * @var string
      */
-    private $imagen;
+    private $image;
 
     /**
      * @var string
@@ -107,27 +107,27 @@ class PrivateMessage
     }
 
     /**
-     * Set imagen
+     * Set image
      *
-     * @param string $imagen
+     * @param string $image
      *
      * @return PrivateMessage
      */
-    public function setImagen($imagen)
+    public function setImage($image)
     {
-        $this->imagen = $imagen;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get imagen
+     * Get image
      *
      * @return string
      */
-    public function getImagen()
+    public function getImage()
     {
-        return $this->imagen;
+        return $this->image;
     }
 
     /**
