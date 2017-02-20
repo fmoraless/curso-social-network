@@ -94,5 +94,13 @@ class PrivateMessageController extends Controller {
 			"form" => $form->createView()
 		));
 	}
+    
+    public function sendedAction(Request $request){
+        $private_messages = $this->getPrivateMessages($request, "sended");
+    }
+    
+    public function getPrivateMessages($request, $type = null){
+        $em = $this->getDoctrine()->getManager();
+    }
 
 }
