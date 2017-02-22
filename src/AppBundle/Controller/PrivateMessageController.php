@@ -59,7 +59,7 @@ class PrivateMessageController extends Controller {
 
                     if ($ext == 'pdf') {
                         $file_name = $user->getId() . time() . "." . $ext;
-                        $doc->move("uploads/message/documents", $file_name);
+                        $doc->move("uploads/messages/documents", $file_name);
 
                         $private_message->setFile($file_name);
                     } else {
@@ -97,10 +97,33 @@ class PrivateMessageController extends Controller {
     
     public function sendedAction(Request $request){
         $private_messages = $this->getPrivateMessages($request, "sended");
+        
+        return $this->render('AppBundle:PrivateMessage:sended.html.twig', array(
+            'pagination' => $private_messages
+        ));
     }
     
     public function getPrivateMessages($request, $type = null){
         $em = $this->getDoctrine()->getManager();
+        
+        $user =  $this->getUser();
+        $user_id = $user->getId();
+        
+        if($type == "sended"){
+            $dql = "SELECT p FROM BackendBundle:PrivateMessage p WHERE"
+                    . " p.emitter = $user_id  ORDER BY p.id DESC"; 
+        }else{
+            $dql = "SELECT p FROM BackendBundle:PrivateMessage p WHERE"
+                    . " p.receiver = $user_id  ORDER BY p.id DESC";
+        }
+        
+        $query = $em->createQuery($dql);
+        
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $request->query->getInt('page', 1), 5
+        );
+        return $pagination;
     }
 
 }
