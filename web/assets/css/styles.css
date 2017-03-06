@@ -246,6 +246,9 @@ text-align: center;
 .profile-box #user_stats .number-stat{
     font-weight: bold;
 }
+.profile-box .buttons-following{
+    margin-top: 20px;
+}
 
 /* PRIVATE MESSAGES*/
 .box-private-message input,
